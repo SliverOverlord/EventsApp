@@ -189,6 +189,7 @@ public class EventInfoActivity extends AppCompatActivity {
         String tmpStr2 = dateFormat2.format(eventInfo.getEndDateTime());
 
         newDateStr = tmpStr1 + " -" + tmpStr2;
+        newDateStr = newDateStr.toLowerCase();
 
         return newDateStr;
     }
