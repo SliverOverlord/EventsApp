@@ -62,17 +62,23 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
         try{
             final Event event = eventList.get(position);
 
-            DateFormat dateFormat1 = new SimpleDateFormat("MM/dd/yy hh a");
-            DateFormat dateFormat2 = new SimpleDateFormat(" hh:mm a");
+            //DateFormat dateFormat1 = new SimpleDateFormat("MM/dd/yy hh a");
+            //DateFormat dateFormat2 = new SimpleDateFormat(" hh:mm a");
 
-            String tmpStr1 = dateFormat1.format(event.getStartDateTime());
-            String tmpStr2 = dateFormat2.format(event.getEndDateTime());
+            //String tmpStr1 = dateFormat1.format(event.getStartDateTime());
+            //String tmpStr2 = dateFormat2.format(event.getEndDateTime());
 
 
             Picasso.get().load(eventList.get(position).getImageUrl()).resize(150,120)
                     .into(holder.eventImage);
             holder.eventTitle.setText(event.getTitle());
-            holder.eventDate.setText(tmpStr1+" -"+tmpStr2);
+
+            //String formatedDateStr = tmpStr1+" -"+tmpStr2;
+            //formatedDateStr = formatedDateStr.toLowerCase();
+
+            //holder.eventDate.setText(formatedDateStr);
+            String formatedDate = event.makeDateStr();
+            holder.eventDate.setText(formatedDate);
 
             holder.parentLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -84,15 +90,6 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
                     context.startActivity(toDetails);
                 }
             });
-
-
-/*
-            Picasso.get().load(eventList.get(position).getImageUrl()).resize(100, 100)
-                    .centerCrop().into(eventImage);
-            eventTitle.setText(event.getTitle());
-            eventDate.setText(tmpStr1+" -"+tmpStr2);
-*/
-            //holder.parentLayout.setOnClickListener((view))
 
         }
         catch(Exception e){

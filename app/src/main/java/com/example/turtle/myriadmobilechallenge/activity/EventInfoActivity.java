@@ -66,14 +66,10 @@ public class EventInfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_info);
 
-
-
+        key = getToken();
 
         Intent idIntent = getIntent();
         id = idIntent.getStringExtra("_id");
-
-
-        key = getToken();
 
         initViews();
         loadData();
@@ -177,6 +173,7 @@ public class EventInfoActivity extends AppCompatActivity {
             //Send back to Login if key has been cleared
             Intent nextActivity = new Intent(getApplicationContext(), LoginActivity.class);
             startActivity(nextActivity);
+            finish();
         }
 
         return tmpKey;
@@ -185,13 +182,13 @@ public class EventInfoActivity extends AppCompatActivity {
     private String makeDateStr(EventInfo eventInfo){
         String newDateStr = "";
 
-        DateFormat dateFormat1 = new SimpleDateFormat("MM/dd/yy hh a");
-        DateFormat dateFormat2 = new SimpleDateFormat(" hh:mm a");
+        DateFormat dateFormat1 = new SimpleDateFormat("MM/dd/yy ha");
+        DateFormat dateFormat2 = new SimpleDateFormat(" h:mma");
 
         String tmpStr1 = dateFormat1.format(eventInfo.getStartDateTime());
         String tmpStr2 = dateFormat2.format(eventInfo.getEndDateTime());
 
-        newDateStr = tmpStr1 + tmpStr2;
+        newDateStr = tmpStr1 + " -" + tmpStr2;
 
         return newDateStr;
     }

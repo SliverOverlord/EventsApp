@@ -8,6 +8,10 @@ Description:
 This app gathers a users login information and submits it to api for a security token.
 It then uses the token to request a json from the api and uses the data to populate
 a recyclerView with events.
+
+Each item in the recyclerView will open to a page with the events details.
+Clicking logout will reset the login credentials and open the login page.
+
  */
 import android.content.Context;
 import android.content.DialogInterface;
@@ -148,6 +152,11 @@ public class LoginActivity extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         finish();
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        finishAffinity();
     }
 
 

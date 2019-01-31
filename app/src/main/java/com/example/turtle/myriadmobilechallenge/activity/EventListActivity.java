@@ -42,9 +42,6 @@ public class EventListActivity extends AppCompatActivity {
         toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //Intent keyIntent = getIntent();
-        //key = keyIntent.getStringExtra("TokenKey");
-
         key = getToken();
 
 
@@ -65,20 +62,6 @@ public class EventListActivity extends AppCompatActivity {
         eventInterface = RetrofitClient.getClient().create(EventInterface.class);
         Call<ArrayList<Event>> call = eventInterface.getAllEvents(key);
 
-        //eventRecycler.setAdapter(eventAdapter);
-
-
-/*
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(" https://challenge.myriadapps.com/api/v1/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-*/
-        //api = retrofit.create()
-
-        //EventInterface eventService = retrofit.create(EventInterface.class);
-
-        //Call<ArrayList<Event>> call = eventService.getAllEvents(key);
 
         call.enqueue(new Callback<ArrayList<Event>>() {
             @Override
@@ -113,6 +96,7 @@ public class EventListActivity extends AppCompatActivity {
                 //Send back to Login if key has been cleared
                 Intent nextActivity = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(nextActivity);
+                finish();
             }
 
         return tmpKey;
@@ -120,10 +104,6 @@ public class EventListActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        //MenuInflater inflater = getMenuInflater();
-       // inflater.inflate(R.menu.menu,menu);
-
-        //return super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
@@ -143,6 +123,11 @@ public class EventListActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        logout();
+    }
+
 
     //Function to reset API token and logout.
     private void logout(){
@@ -154,6 +139,7 @@ public class EventListActivity extends AppCompatActivity {
 
             Intent logoutActivity = new Intent(getApplicationContext(), LoginActivity.class);
             startActivity(logoutActivity);
+            finish();
         }
         catch (Exception e){
             e.printStackTrace();

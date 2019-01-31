@@ -62,14 +62,23 @@
         android:layout_height="wrap_content"
         android:paddingLeft="@dimen/textpadding20"
         android:paddingRight="@dimen/textpadding20"
+        android:paddingBottom="@dimen/textPadding10dp"
         android:text="@string/location"
         android:textColor="@color/EventBlue" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:background="#c0c0c0"/>
 
     <TextView
         android:id="@+id/eventDetailsSpeakers"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/textpadding20"
+        android:paddingLeft="@dimen/textpadding20"
+        android:paddingTop="@dimen/textPadding10dp"
+        android:paddingRight="@dimen/textpadding20"
+        android:paddingBottom="@dimen/textpadding20"
         android:text="@string/speaker" />
 
 </LinearLayout>

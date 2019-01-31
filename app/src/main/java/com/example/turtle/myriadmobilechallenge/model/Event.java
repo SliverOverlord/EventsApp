@@ -37,7 +37,7 @@ public class Event {
         this.startDateTime = startDateTime;
         this.endDateTime = endDateTime;
 
-        this.finishedDateStr = makeDateStr(startDateTime,endDateTime);
+        this.finishedDateStr = makeDateStr();
     }
 
     public int getEventId() {
@@ -103,12 +103,6 @@ public class Event {
         return finishedDateStr;
     }
 
-    /*
-    public void setDateStr(String dateStr) {
-        this.dateStr = dateStr;
-    }
-    */
-
     public boolean isFeatured() {
 
         return featured;
@@ -119,54 +113,18 @@ public class Event {
         this.featured = featured;
     }
 
-    private Date makeDate(String dateStr){
-        Date newDate = new Date();
-        try{
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
-            newDate = dateFormat.parse(dateStr);
-        }
-        catch(Exception e){
-            e.printStackTrace();
-        }
+    public String makeDateStr(){
 
-        return newDate;
-    }
-/*
-    private Date makeDate2(Date date1, Date date2){
-        Date newDate = new Date();
-        try{
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
-            //newDate = dateFormat.parse(dateStr);
-            String tmp = "";
-            tmp += date1.getYear()+"-"+date1.getTime()+"-"+date1.getDay();
-            tmp += "'T'"+date2.get
-        }
-        catch(Exception e){
-            e.printStackTrace();
-        }
+        DateFormat dateFormat1 = new SimpleDateFormat("MM/dd/yy ha");
+        DateFormat dateFormat2 = new SimpleDateFormat(" hh:mma");
 
-        return newDate;
-    }
-    */
+        String tmpStr1 = dateFormat1.format(this.getStartDateTime());
+        String tmpStr2 = dateFormat2.format(this.getEndDateTime());
 
-    private String makeDateStr(Date date1, Date date2){
-        String dateStr = "";
+        String formatedDateStr = tmpStr1+" -"+tmpStr2;
+        formatedDateStr = formatedDateStr.toLowerCase();
 
-        //dateStr = dateStr + date1.getMonth()+"/";
-        //dateStr = dateStr + date1.getDay()+"/";
-        //dateStr = dateStr + date1.getYear()+ " ";
-        //dateStr = dateStr + date1.getHours()+"-";
-        //dateStr = dateStr + date2.getHours();
-
-        DateFormat dateFormat1 = new SimpleDateFormat("MM/dd/yy hh a");
-        DateFormat dateFormat2 = new SimpleDateFormat(" hh:mm a");
-
-        String tmpStr1 = dateFormat1.format(date1);
-        String tmpStr2 = dateFormat2.format(date2);
-
-        dateStr = tmpStr1 + " -" + tmpStr2;
-
-        return dateStr;
+        return formatedDateStr;
     }
 
 }
