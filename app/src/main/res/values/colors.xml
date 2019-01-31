@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="white">#FFFFFF</color>
+    <color name="offWhite">#a5bbcd</color>
+    <color name="btnBackground">#dde6ef</color>
+    <color name="EventBlue">#035686</color>
+    <color name="EventDarkBlue">#03446a</color>
+    <color name="black">#000000</color>
+</resources>

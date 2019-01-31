@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">MyriadMobileChallenge</string>
+    <string name="titleTxt">Events</string>
+    <string name="userNameF">Username</string>
+    <string name="passwordtxt">Password</string>
+    <string name="loginTxt">LOGIN</string>
+    <string name="logOut">Log Out</string>
+    <string name="loginURL">https://challenge.myriadapps.com/api/v1/login</string>
+    <string name="eventTitle">Event Title</string>
+    <string name="defDate">12/20/18 4pm-5:30pm</string>
+    <string name="location">Location</string>
+    <string name="description">Description</string>
+    <string name="speaker">Speaker</string>
+</resources>

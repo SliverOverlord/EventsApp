@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="size30sp">30sp</dimen>
+    <dimen name="size10dp">10dp</dimen>
+    <dimen name="size20dp">20dp</dimen>
+    <dimen name="size15sp">15sp</dimen>
+    <dimen name="horizontal_margin">16dp</dimen>
+    <dimen name="vertical_margin">16dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="vertil_row_padding">10dp</dimen>
+    <dimen name="eventTitleSize">20dp</dimen>
+    <dimen name="textpadding20">20dp</dimen>
+    <dimen name="textPadding10dp">10dp</dimen>
+</resources>
