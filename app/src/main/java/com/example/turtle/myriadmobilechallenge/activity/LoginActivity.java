@@ -27,7 +27,6 @@ import android.widget.EditText;
 
 import com.example.turtle.myriadmobilechallenge.R;
 import com.example.turtle.myriadmobilechallenge.controller.EventInterface;
-import com.example.turtle.myriadmobilechallenge.controller.LoginService;
 import com.example.turtle.myriadmobilechallenge.controller.RetrofitClient;
 import com.example.turtle.myriadmobilechallenge.model.TokenKey;
 
@@ -40,7 +39,6 @@ public class LoginActivity extends AppCompatActivity {
     private EditText passwordTxt;
     private Button loginBtn;
 
-    private LoginService loginService;
     EventInterface eventInterface;
     TokenKey tokenKey;
 
@@ -64,18 +62,12 @@ public class LoginActivity extends AppCompatActivity {
                 Boolean validVar = validate();
                 if (validVar == true){
 
-
-                    //loginService = new LoginService(getApplicationContext(),userNameTxt.getText().toString(),passwordTxt.getText().toString());
-                    //loginService.execute();
                     connect();
-
-
 
                     userNameTxt.setText("");
                     passwordTxt.setText("");
                     userNameTxt.requestFocus();
-
-
+                    
                 }
                 else {
                     invalidAlert();
