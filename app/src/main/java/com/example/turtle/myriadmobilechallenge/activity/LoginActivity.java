@@ -26,7 +26,14 @@ import android.widget.EditText;
 
 
 import com.example.turtle.myriadmobilechallenge.R;
+import com.example.turtle.myriadmobilechallenge.controller.EventInterface;
 import com.example.turtle.myriadmobilechallenge.controller.LoginService;
+import com.example.turtle.myriadmobilechallenge.controller.RetrofitClient;
+import com.example.turtle.myriadmobilechallenge.model.TokenKey;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText userNameTxt;
@@ -34,6 +41,8 @@ public class LoginActivity extends AppCompatActivity {
     private Button loginBtn;
 
     private LoginService loginService;
+    EventInterface eventInterface;
+    TokenKey tokenKey;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,8 +65,10 @@ public class LoginActivity extends AppCompatActivity {
                 if (validVar == true){
 
 
-                    loginService = new LoginService(getApplicationContext(),userNameTxt.getText().toString(),passwordTxt.getText().toString());
-                    loginService.execute();
+                    //loginService = new LoginService(getApplicationContext(),userNameTxt.getText().toString(),passwordTxt.getText().toString());
+                    //loginService.execute();
+                    connect();
+
 
 
                     userNameTxt.setText("");
@@ -89,6 +100,36 @@ public class LoginActivity extends AppCompatActivity {
         catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    private void connect() {
+
+        String user = userNameTxt.getText().toString();
+        String pass = passwordTxt.getText().toString();
+        eventInterface = RetrofitClient.getClient().create(EventInterface.class);
+        Call<TokenKey> call = eventInterface.login(user, pass);
+
+        call.enqueue(new Callback<TokenKey>() {
+            @Override
+            public void onResponse(Call<TokenKey> call, Response<TokenKey> response) {
+                tokenKey = response.body();
+                String key = tokenKey.getKey();
+
+                SharedPreferences sharedToken = getApplicationContext().getSharedPreferences("tokenInfo", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedToken.edit();
+                editor.putString("token", key);
+                editor.apply();
+
+                Intent secondActivity = new Intent(getApplicationContext(), EventListActivity.class);
+                secondActivity.putExtra("TokenKey", key);
+                getApplicationContext().startActivity(secondActivity);
+            }
+
+            @Override
+            public void onFailure(Call<TokenKey> call, Throwable t) {
+
+            }
+        });
     }
 
     //Function to save API token

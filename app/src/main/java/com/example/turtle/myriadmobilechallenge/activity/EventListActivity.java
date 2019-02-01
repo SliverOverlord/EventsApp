@@ -68,8 +68,6 @@ public class EventListActivity extends AppCompatActivity {
             public void onResponse(Call<ArrayList<Event>> call, Response<ArrayList<Event>> response) {
                 eventList = response.body();
 
-                //Log.d("TAG","Response = " + eventList);
-
                 try{
                     eventAdapter = new EventAdapter(getApplicationContext(), eventList);
                     eventRecycler.setAdapter(eventAdapter);
