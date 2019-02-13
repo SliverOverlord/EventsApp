@@ -120,6 +120,7 @@ public class EventInfoActivity extends AppCompatActivity {
 
                     setLocationStr();
                     makeSpeakerStr();
+                    toolbar.setTitle(info.getTitle());
 
 
                 }

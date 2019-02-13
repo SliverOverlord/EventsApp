@@ -67,7 +67,7 @@ public class LoginActivity extends AppCompatActivity {
                     userNameTxt.setText("");
                     passwordTxt.setText("");
                     userNameTxt.requestFocus();
-                    
+
                 }
                 else {
                     invalidAlert();
